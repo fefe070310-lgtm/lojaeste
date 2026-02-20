@@ -40,8 +40,21 @@ export enum LoadingState {
   SUCCESS = 'SUCCESS'
 }
 
+export interface Order {
+  id: string;
+  items: Product[];
+  total: number;
+  date: string;
+  customer: {
+    name: string;
+    email: string;
+  };
+  status: 'pending' | 'completed' | 'shipped';
+}
+
 export type ViewState = 
   | { type: 'home' }
   | { type: 'product', product: Product }
   | { type: 'journal', article: JournalArticle }
-  | { type: 'checkout' };
+  | { type: 'checkout' }
+  | { type: 'dashboard' };
